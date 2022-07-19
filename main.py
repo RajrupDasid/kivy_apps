@@ -56,19 +56,25 @@ class signupWindow(Screen):
         else:
             popFun()
 
+#log data screen class
 class logDataWindow(Screen):
     pass
 
+# your application window manager
 class windowManager(ScreenManager):
     pass
+
+# important configuration part 
 kv = Builder.load_file('login.kv')
 sm = windowManager()
 users = pd.read_csv('login.csv')
 
+#main widget systems
 sm.add_widget(loginWindow(name='login'))
 sm.add_widget(signupWindow(name='signup'))
 sm.add_widget(logDataWindow(name='logdata'))
 
+#main class
 class loginMain(App):
     def build(self):
         return sm
